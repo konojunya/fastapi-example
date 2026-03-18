@@ -8,7 +8,9 @@ setup_logging()
 
 def create_app() -> FastAPI:
     app = FastAPI(title="FastAPI Example")
+
     app.add_middleware(AccessLogMiddleware)
+
     app.include_router(health.router)
     app.include_router(hello.router, prefix="/hello", tags=["hello"])
 
