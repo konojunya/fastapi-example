@@ -3,7 +3,9 @@ import os
 class Settings:
     @property
     def database_url(self) -> str:
-        return os.getenv("DATABASE_URL", "postgresql+psycopg://postgres:postgres@localhost:5432/app_db")
-
+        value = os.getenv("DATABASE_URL")
+        if not value:
+            raise RuntimeError("DATABASE_URL is not set")
+        return value
 
 settings = Settings()
