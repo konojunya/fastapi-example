@@ -12,7 +12,7 @@ def create_app() -> FastAPI:
     app.add_middleware(AccessLogMiddleware)
 
     app.include_router(health.router)
-    app.include_router(hello.router, prefix="/hello", tags=["hello"])
+    app.include_router(hello.router)
 
     return app
 
